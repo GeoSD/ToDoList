@@ -43,6 +43,11 @@ class ToDoTableViewController: UITableViewController {
         
         let todo = todos[indexPath.row]
         cell.textLabel?.text = todo.title
+        if todo.isComplite {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
     
         return cell
     }
