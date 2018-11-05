@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
+class AddEditTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var isCompleteButton: UIButton!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
-    @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     let dueDatePickerIndexPath = IndexPath(row: 2, section: 0)
@@ -37,7 +37,7 @@ class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
         updateUI()
         
         titleTextField.delegate = self
-        notesTextField.delegate = self
+        notesTextView.delegate = self
         
         updateSaveButtonState()
 
@@ -50,17 +50,17 @@ class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath:     IndexPath) -> CGFloat {
+        
         switch indexPath {
         case dueDatePickerIndexPath:
-            if isDueDatePickerShown {
-                return 216
-            } else {
-                return 0
-            }
+            return isDueDatePickerShown ? 216 : 0
+        case [1, 0]:
+            return notesTextView.contentSize.height
         default:
             return 44
         }
+
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,9 +69,9 @@ class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
         if titleTextField.isEditing {
             titleTextField.resignFirstResponder()
         }
-        if notesTextField.isEditing {
-            titleTextField.resignFirstResponder()
-        }
+//        if notesTextView.contentMode {
+//            titleTextField.resignFirstResponder()
+//        }
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -87,12 +87,11 @@ class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "SaveUnwind" else { return }
         
-        todo = ToDo(title: titleTextField.text!, isComplite: isCompleteButton.isSelected, dueDate: dueDatePicker.date, notes: notesTextField.text)
+        todo = ToDo(title: titleTextField.text!, isComplite: isCompleteButton.isSelected, dueDate: dueDatePicker.date, notes: notesTextView.text)
     }
     
     @IBAction func dueDatePickerValueChanged(_ sender: UIDatePicker) {
@@ -111,7 +110,7 @@ class AddEditTableViewController: UITableViewController, UITextFieldDelegate {
         titleTextField.text = todo.title
         isCompleteButton.isSelected = todo.isComplite
         dueDatePicker.date = todo.dueDate
-        notesTextField.text = todo.notes
+        notesTextView.text = todo.notes
         updateDueDateView()
     }
     

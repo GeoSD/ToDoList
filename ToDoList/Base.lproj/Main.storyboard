@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wuX-yK-TNq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wuX-yK-TNq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -143,24 +143,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S1O-we-opc">
-                                        <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Notes" id="cYV-c1-G53">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="vrZ-WS-wR3">
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S1O-we-opc" id="AVB-4G-dY0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vrZ-WS-wR3" id="uxu-eY-OZG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notes" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QFV-6s-2G9">
-                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                                    <nil key="textColor"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hVJ-dk-EeD">
+                                                    <rect key="frame" x="8" y="8" width="359" height="183.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="QFV-6s-2G9" secondAttribute="trailing" constant="8" id="PA1-Xg-Vqf"/>
-                                                <constraint firstItem="QFV-6s-2G9" firstAttribute="centerY" secondItem="AVB-4G-dY0" secondAttribute="centerY" id="U0H-Nr-ZYk"/>
-                                                <constraint firstItem="QFV-6s-2G9" firstAttribute="leading" secondItem="AVB-4G-dY0" secondAttribute="leading" constant="8" id="YTi-Iw-dS3"/>
+                                                <constraint firstAttribute="bottom" secondItem="hVJ-dk-EeD" secondAttribute="bottom" constant="8" id="3tI-Ni-rlo"/>
+                                                <constraint firstAttribute="trailing" secondItem="hVJ-dk-EeD" secondAttribute="trailing" constant="8" id="Zo7-VE-fyb"/>
+                                                <constraint firstItem="hVJ-dk-EeD" firstAttribute="top" secondItem="uxu-eY-OZG" secondAttribute="top" constant="8" id="k0t-49-pxt"/>
+                                                <constraint firstItem="hVJ-dk-EeD" firstAttribute="leading" secondItem="uxu-eY-OZG" secondAttribute="leading" constant="8" id="rhm-mM-o6i"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -188,7 +193,7 @@
                         <outlet property="dueDateLabel" destination="CDa-1l-f9Q" id="hjA-Se-EWw"/>
                         <outlet property="dueDatePicker" destination="5p5-qd-QeI" id="ecZ-pO-umQ"/>
                         <outlet property="isCompleteButton" destination="BiJ-bJ-enc" id="cbO-7b-2hc"/>
-                        <outlet property="notesTextField" destination="QFV-6s-2G9" id="1SL-cT-RRF"/>
+                        <outlet property="notesTextView" destination="hVJ-dk-EeD" id="EGH-iz-ooA"/>
                         <outlet property="saveButton" destination="E6p-Jt-TKM" id="I0Q-8F-qod"/>
                         <outlet property="titleTextField" destination="VDL-I1-RZD" id="inJ-5d-tbW"/>
                     </connections>

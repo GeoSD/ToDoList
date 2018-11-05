@@ -104,7 +104,7 @@ class ToDoTableViewController: UITableViewController {
                 let title = addEditTVC.titleTextField.text
                 let isComplete = addEditTVC.isCompleteButton.isSelected
                 let dueDate = addEditTVC.dueDatePicker.date
-                let notes = addEditTVC.notesTextField.text ?? ""
+                let notes = addEditTVC.notesTextView.text ?? ""
                 
                 let newToDo: ToDo = ToDo(title: title!, isComplite: isComplete, dueDate: dueDate, notes: notes)
                 todos.append(newToDo)
